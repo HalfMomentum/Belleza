@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <ul>
+    {% for user in users %}
+      <li>
+        <p>{{user.name}}=>{{user.email}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  <form action="/add" method="post">
+    Name
+    <input type="text" name="name">
+    email
+    <input type="text" name="email">
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
