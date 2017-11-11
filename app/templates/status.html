@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{# context needs 'count' <number of seats booked> and if the status is 'current' #}
+{% block content %}
+
+  <div class="container">
+    <link rel="stylesheet" href="../static/css/status.css">
+
+    <h1>Status</h1>
+    {% if current %}
+    <h3>live</h3>
+    {% endif %}
+
+    <form class="form">
+
+      <ul>
+
+        {%for i in range(1,4) %}
+
+          {% if i <= count %}
+            <li class="seats booked">{{i}}</li>
+          {% else %}
+            <li class="seats">{{i}}</li>
+          {% endif %}
+
+        {% endfor %}
+
+      </ul>
+
+      <br>
+
+      <h3><span class="nseat"> {{count}} </span> Seats left</h3>
+
+      <ul>
+
+        <button class="button_book" id="b1">Book Now</button><br>
+        <button class="button_book" id="b2">Book For Later</button><br>
+
+      </ul>
+
+    </form>
+
+  </div>
+
+{% endblock %}
