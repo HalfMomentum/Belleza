@@ -1,6 +1,17 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <p>{{ msg.email }}</p>
-      <a class="btn btn-primary" href='/logout'>LOGOUT</a>
+
+<link rel="stylesheet" href="../static/css/styles.css">
+<link rel="stylesheet" href="../static/css/status.css">
+
+<div class="container">
+  <h1>Landing</h1>
+
+  <form class="form">
+    <button id="current" type="button" onclick="location.href='{{url_for('status',real=false)}}'">Current Live Status</button>
+    <button id="current" type="button" onclick="location.href='{{url_for('index')}}'">New Appointment</button>
+
+  </form>
+</div>
 {% endblock %}
