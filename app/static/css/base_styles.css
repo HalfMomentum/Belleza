@@ -87,6 +87,10 @@ form button:hover,.login:hover {
 }
 
 
+#reg-button{
+  width: 125px;
+}
+
 .bg-bubbles {
   position: absolute;
   top: 0;

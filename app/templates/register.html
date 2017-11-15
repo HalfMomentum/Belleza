@@ -1,21 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+<link rel="stylesheet" href="../static/css/styles.css">
+<link rel="stylesheet" href="../static/css/status.css">
+
 <div class="container">
+  <h1>Register</h1>
 
-  <h1>Sign In</h1>
-
-  <form class="form" method="post" action="/login">
+  <form class="form">
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="name" placeholder="Username">
 
     <input type="password" name="password" placeholder="Password">
+    <input type="password" name="re-password" placeholder="Password Again">
     <!-- <a href="landing.html" class="login">Login</a> -->
 
-    <button type="submit" id="login-button">Login</button>
-    <button type="submit" id="reg-button">Register</button>
+    <button type="submit" id="register-button">Register</button>
 
   </form>
-
 </div>
 {% endblock %}
