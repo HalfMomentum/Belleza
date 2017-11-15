@@ -17,9 +17,7 @@ google = oauth.remote_app('google',
                           consumer_key=config.GOOGLE_CLIENT_ID,
                           consumer_secret=config.GOOGLE_CLIENT_SECRET)
 
-
-
-@app.route('/googlelogin')
+@app.route(config.REDIRECT_URI)
 @google.authorized_handler
 def authorized(resp):
     access_token = resp['access_token']

@@ -12,7 +12,6 @@
     {% endif %}
 
     <form class="form">
-
       <ul>
 
         {%for i in range(1,4) %}
@@ -29,12 +28,13 @@
 
       <br>
 
-      <h3><span class="nseat"> {{count}} </span> Seats left</h3>
+      <h3><span class="nseat"> {{ available }} </span>Seat{% if available>1 %}s{% endif %} left</h3>
 
       <ul>
 
-        <button class="button_book" id="b1">Book Now</button><br>
-        <button class="button_book" id="b2">Book For Later</button><br>
+        <button type="button" onclick="location.href='/book';" class="button_book">Book Now</button>
+        <button type="button" onclick="location.href='{{url_for('index')}}';" class="button_book">Book For Later</button>
+        <button type="button" onclick="location.href='{{url_for('index')}}';" class="button_book">Home</button>
 
       </ul>
 

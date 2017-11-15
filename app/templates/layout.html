@@ -2,13 +2,11 @@
 <html>
 <head>
 
-  <<title>Belleza | {{title}}</title>
+  <title>Belleza | {{title}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/base_styles.css">
-
 </head>
 <body>
-
 
   {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -27,6 +25,10 @@
     {% endblock %}
 
     {% include 'partials/background.html' %}
+
+
+
+
 
   </div>
 

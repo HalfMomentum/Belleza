@@ -13,6 +13,18 @@ body {
   font-weight: 300;
 }
 
+.log{
+  position: relative;
+  display: block;
+  background: inherit;
+  border-color: inherit;
+  color:#fff;
+  font-size: 1.2em;
+  text-decoration: underline;
+  padding: 1em;
+  z-index: 100;
+}
+
 .wrapper {
   background: #50a3a2;
   background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
@@ -33,12 +45,12 @@ body {
 }
 
 .container h1 {
-  font-size: 40px;
+  font-size: 3em;
   font-weight: 200;
 }
 
 form {
-  padding: 150px 0;
+  padding: 100px 0;
   position: relative;
   z-index: 2;
 }
@@ -50,7 +62,7 @@ form input {
   width: 250px;
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 10px auto;5
   display: block;
   text-align: center;
   font-size: 18px;
@@ -74,7 +86,7 @@ form button,.login {
   text-decoration: none;
   background-color: white;
   border: 0;
-  padding: 10px 15px;
+  padding: 7px 7px;
   color: rgb(123,123,123);
   border-radius: 3px;
   width: 250px;
@@ -84,6 +96,12 @@ form button,.login {
 }
 form button:hover,.login:hover {
   background-color: #f5f7f9;
+}
+
+#log-btn{
+  width: 125px;
+  background-color: rgba(123,123,255,0.6);
+  color: inherit;
 }
 
 
