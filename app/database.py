@@ -1,41 +1,59 @@
-from flask import _app_ctx_stack
+from flask import _app_ctx_stack,g,current_app, flash
 import sqlite3
 from app import app
+from config import DATABASE
+"""
+need to init_db everytime schema is changed
+steps to connect:
+$>execute python shell
+$>from app import database
+$>database.init_db()
+"""
+
+def connect_db():
+    """Connects to the specific database."""
+    rv = sqlite3.connect(DATABASE)
+    rv.row_factory = sqlite3.Row
+    return rv
+
+
+def init_db():
+    """Initializes the database."""
+    with app.app_context():
+        db = get_db()
+        with current_app.open_resource('schema.sql', mode='r') as f:
+            db.executescript(f.read())
+        db.commit()
+
 
 def get_db():
     """Opens a new database connection if there is none yet for the
     current application context.
     """
-    print 'database fn called'
-    top = _app_ctx_stack.top
-    if not hasattr(top, 'sqlite_db'):
-        top.sqlite_db = sqlite3.connect(app.config['DATABASE'])
-        top.sqlite_db.row_factory = sqlite3.Row
-    return top.sqlite_db
+    if not hasattr(g, 'sqlite_db'):
+        g.sqlite_db = connect_db()
+    return g.sqlite_db
 
-def init_db():
-    """Initializes the database."""
-    db = __init__.get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-    db.commit()
+def query_db(query, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv
 
 def add_book(email,date,time):
     """Add entry in the booking"""
-    if check_book <3:
+    if check_book() < 3:
         try:
-            db = get_db()
-            db.execute('insert into Bookings (customerEmail,bookDate, bookTime) values (?, ?, ?)',
-                [email,date,time])
-            db.commit()
-            return 'Appointment added successfully !!'
-        except e:
-            return 'Error connecting Database !!'
+            query = 'insert into Bookings (customerEmail,bookDate, bookTime) values (\'{}\', \'{}\', \'{}\');'.format(email,date,time)
+            res = query_db(query, one=True)
+            flash( 'Appointment added successfully !!')
+        except Exception, e:
+            print e
+            flash('Error connecting Database !!')
     return 'No slots available, try a different slot !!'
 
 def check_book():
     """Fetch all current bookings"""
-    db = get_db()
-    query = 'select count(*) from Bookings where bookDate=Date(now())'
-    cnt = db.execute(query)
+    query = 'select count(*) as booked from Bookings;'
+    cnt = int(query_db(query, one=True)['booked'])
     return cnt;

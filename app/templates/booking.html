@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+
+
+  <form class="form" method="post" action="/book">
+    
+    <h1>Book an Appointment</h1>
+  </br>
+    <h3>Date</h3>
+    </br><input type="text" name="date" placeholder="yyyy-mm-dd">
+</br>
+    <h3>Time</h3>
+    </br><input type="text" name="time" placeholder="hh:00">
+    </br></br>
+    <button type="submit" id="login-button">Book</button>
+
+  </form>
+
+</div>
+{% endblock %}

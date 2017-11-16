@@ -11,8 +11,8 @@
   <form class="form">
     <button id="current" type="button" onclick="location.href='{{url_for('status',real=false)}}'">Current Live Status</button>
     <button id="current" type="button" onclick="location.href='{{url_for('booking')}}'">New Appointment</button>
-
-    {% if not session.get['access_token'] == None %}
+    <br>
+    {% if not session['access_token'] %}
     <button type="button" onclick="location.href='{{url_for('login')}}'" id="log-btn">Login</button>
     {% else %}
     <button type="button" onclick="location.href='{{url_for('logout')}}'" id="log-btn">Logout</button>

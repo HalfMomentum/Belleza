@@ -4,7 +4,7 @@
 {% block content %}
 
   <div class="container">
-    <link rel="stylesheet" href="../static/css/status.css">
+      <link rel="stylesheet" href="../static/css/status.css">
 
     <h1>Status</h1>
     {% if current %}
@@ -28,15 +28,15 @@
 
       <br>
 
-      <h3><span class="nseat"> {{ available }} </span>Seat{% if available>1 %}s{% endif %} left</h3>
+      <h3><span class="nseat"> {{ 3-count }} </span>Seats left</h3>
 
       <ul>
 
-        <button type="button" onclick="location.href='/book';" class="button_book">Book Now</button>
-        <button type="button" onclick="location.href='{{url_for('index')}}';" class="button_book">Book For Later</button>
         <button type="button" onclick="location.href='{{url_for('index')}}';" class="button_book">Home</button>
+        <button type="button" onclick="location.href='{{url_for('booking')}}';" class="button_book">Book Now</button>
 
       </ul>
+
 
     </form>
 

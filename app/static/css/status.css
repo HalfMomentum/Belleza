@@ -43,12 +43,11 @@ form {
   z-index: 2;
 }
 
-form button,li {
+form input {
   outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(0, 13, 123, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   width: 250px;
-  height: 100px;
   border-radius: 3px;
   padding: 10px 15px;
   margin: 0 auto 10px auto;
@@ -60,26 +59,61 @@ form button,li {
   font-weight: 300;
 }
 
-form li{
-  width: 75px;
-  padding: 1.1em;
-  background-color: rgba(12,200,12,0.6)
-  color:inherit;
-  margin: 10px 30px;
-  padding: auto;
-  height: 75px;
-  display: inline-block;
-}
-
-
-form button:hover {
+form input:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-form button:focus {
+form input:focus {
   background-color: white;
   width: 300px;
   color: #53e3a6;
+}
+form button, form li {
+  outline: 0;
+  display: inline;
+  text-decoration: none;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: rgb(123,123,123);
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+}
+form button:hover,form li {
+  background-color: #f5f7f9;
+}
+
+.button_book{
+  display: inline-block;
+  width: 33%;
+  margin: 25% 5%;
+  background-color: rgba(100,50,255,0.4);
+  color: white;
+  height: 75px;
+  padding: 5% 0;
+}
+
+.seats{
+  background-color: rgba(12,123,12,0.4);
+  color:white;
+  display: inline-block;
+  width: 15%;
+  margin: 0 5%;
+}
+
+.nseat{
+  text-decoration: underline;
+  font-size: 1.3em;
+  font-family: cursive;
+}
+
+.booked{
+  background-color: rgba(123,12,12,0.4);
+  color: white;
+
 }
 
 

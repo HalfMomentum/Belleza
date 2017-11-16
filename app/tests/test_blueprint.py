@@ -10,7 +10,7 @@ def test_index_200():
     A very basic test, if the front page is broken, something has obviously failed.
     """
     assert '200 OK' == current_app.test_client().get('/').status
-
+test_index_200()
 """
 Checks if our index page at any time returns 400 bad REQUEST.
 """
@@ -22,13 +22,13 @@ def test_assert_404(self):
     """
     Checks if our index page at any time returns 404 oops.
     """
-self.assert404(self.client.get("/oops/"))
+    self.assert404(self.client.get("/oops/"))
 
 def test_assert_403(self):
     """
     Checks if our index page at any time returns 403 Forbidden.
     """
-self.assert403(self.client.get("/forbidden/"))
+    self.assert403(self.client.get("/forbidden/"))
 
 def test_assert_401(self):
     """
