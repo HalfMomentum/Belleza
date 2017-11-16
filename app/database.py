@@ -2,6 +2,7 @@ from flask import _app_ctx_stack,g,current_app, flash
 import sqlite3
 from app import app
 from config import DATABASE
+
 """
 need to init_db everytime schema is changed
 steps to connect:
@@ -44,7 +45,7 @@ def add_book(email,date,time):
     """Add entry in the booking"""
     if check_book() < 3:
         try:
-            query = 'insert into Bookings (customerEmail,bookDate, bookTime) values (\'{}\', \'{}\', \'{}\');'.format(email,date,time)
+            query = 'insert into Bookings (customerEmail,bookDate, bookTime, bookService) values (\'{}\', \'{}\', \'{}\', \'{}\');'.format(email,date,time,'haircut')
             res = query_db(query, one=True)
             flash( 'Appointment added successfully !!')
         except Exception, e:
@@ -54,6 +55,11 @@ def add_book(email,date,time):
 
 def check_book():
     """Fetch all current bookings"""
+
+    query = 'select * from Bookings;'
+    cnt = query_db(query)
+    for entry in cnt:
+        print entry
     query = 'select count(*) as booked from Bookings;'
     cnt = int(query_db(query, one=True)['booked'])
     return cnt;
