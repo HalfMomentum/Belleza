@@ -5,12 +5,26 @@
 
 
   <form class="form" method="post" action="/book">
-    
+
     <h1>Book an Appointment</h1>
-  </br>
+    </br>
+    <h3>Services</h3>
+    </br>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Services
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li>HairCut</li>
+        <li>Face Wash</li>
+        <li>Waxing</li>
+        <li>Detan</li>
+        <li>Shaving</li>
+      </ul>
+    </div>
+    </br>
     <h3>Date</h3>
     </br><input type="text" name="date" placeholder="yyyy-mm-dd">
-</br>
+    </br>
     <h3>Time</h3>
     </br><input type="text" name="time" placeholder="hh:00">
     </br></br>
