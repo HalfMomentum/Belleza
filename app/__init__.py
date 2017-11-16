@@ -41,12 +41,14 @@ def connect_db():
     """Connects to the specific database."""
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
+    print 'db connection established'
     return rv
 
 def get_db():
     """Opens a new database connection if there is none yet for the
     current application context.
     """
+    print 'init function called'
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
@@ -70,5 +72,6 @@ def initdb_command():
     print('Initialized the database.')
 
 if __name__ == '__main__':
+    print 'i was here'
     init_db()
     app.run()

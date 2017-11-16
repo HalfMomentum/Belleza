@@ -3,15 +3,21 @@
 {% block content %}
 
 <link rel="stylesheet" href="../static/css/styles.css">
-<link rel="stylesheet" href="../static/css/status.css">
-
+<link rel="stylesheet" href="../static/css/base_styles.css">
+<!-- <button class="log" type="submit">Logout</button> -->
 <div class="container">
   <h1>Landing</h1>
 
   <form class="form">
     <button id="current" type="button" onclick="location.href='{{url_for('status',real=false)}}'">Current Live Status</button>
-    <button id="current" type="button" onclick="location.href='{{url_for('index')}}'">New Appointment</button>
+    <button id="current" type="button" onclick="location.href='{{url_for('booking')}}'">New Appointment</button>
 
+    {% if not session.get['access_token'] == None %}
+    <button type="button" onclick="location.href='{{url_for('login')}}'" id="log-btn">Login</button>
+    {% else %}
+    <button type="button" onclick="location.href='{{url_for('logout')}}'" id="log-btn">Logout</button>
+    {% endif %}
   </form>
 </div>
+
 {% endblock %}
