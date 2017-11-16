@@ -1,18 +1,9 @@
-import app
-if app.config['TESTING']:
-    print 'In testing mode'
-else:
-    app.config['TESTING'] = True;
-    print'Entering testing mode'
+from flask import Flask
+from flask_testing import TestCase
 
-"""
-Making Sure the test variable in config file is set to True.
-most basic task to make testing possible.
-    f = tmpdir.join('config.yml')
-    def test_get_config_yaml(tmpdir):
-    f.write('TEST_VAR: true')
+class MyTest(TestCase):
 
-    config = get_config('app.config.Testing', yaml_files=[str(f)])
-
-    assert config.TEST_VAR is Tr
-"""
+    def create_app(self):
+        app = Flask(__name__)
+        app.config['TESTING'] = True
+        return app

@@ -25,7 +25,6 @@ def booking():
         return render_template('booking.html', title='Book')
     else:
         access_token = session.get('access_token')
-        print access_token
         if access_token is None:
             return redirect(url_for('login'))
         dt = request.form['date']
@@ -34,6 +33,14 @@ def booking():
         database.add_book(em,dt,tm)
         return render_template('index.html',title="Landing")
 
+@app.route('/myBook')
+def myBooking():
+    access_token = session.get('access_token')
+    if access_token is None:
+        flash('login to view your bookings')
+        return redirect(url_for('login'))
+    entries = database.show_book()
+    return render_template('myBookings.html', title="History", entries=entries)
 
 @app.route('/login', methods=['POST','GET'])
 def login():

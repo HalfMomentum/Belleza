@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/styles.css">
+<link rel="stylesheet" href="../static/css/booking.css">
+<div class="container">
+  <h1>My Booked History</h1>
+
+  {% if not entries %}
+
+  <h2>No booking yet.</h2>
+  <h3>Go to <a href="{{url_for('booking')}}"> Booking </a>page to add an entry</h3>
+
+  {% else %}
+    <table >
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Service</th>
+      </tr>
+
+      {% for entry in entries %}
+        <tr>
+          <td>{{ entry['bookDate'] }}</td>
+          <td>{{ entry['bookTime'] }}</td>
+          <td>{{ entry['bookService'] }}</td>
+        </tr>
+      {% endfor %}
+
+    </table>
+
+  {% endif %}
+
+<form class="from">
+
+  <button type="button" onclick="location.href='{{url_for('index')}}'" id="log-btn">Home</button>
+  <button type="button" onclick="location.href='{{url_for('logout')}}'" id="log-btn">Logout</button>
+
+</form>
+
+</div>
+
+{% endblock %}
