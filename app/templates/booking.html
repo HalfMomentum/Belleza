@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+<link rel="stylesheet" href="../static/css/booking.css">
 <div class="container">
 
 
@@ -9,18 +11,28 @@
     <h1>Book an Appointment</h1>
     </br>
     <h3>Services</h3>
-    </br>
-    <div class="dropdown">
+    <!-- <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Services
       <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        li>HairCut</li>
+      <ul class="dropdown-menu drop">
+        <li>HairCut</li>
         <li>Face Wash</li>
         <li>Waxing</li>
         <li>Detan</li>
         <li>Shaving</li>
       </ul>
 
+    </div> -->
+
+    <div class="input-group drop">
+      <select name='services' class="form-control">
+        <option value="0">Services</option>
+        <option value="1">HairCut</option>
+        <option value="2">Shave</option>
+        <option value="3">Face Wash</option>
+        <option value="4">De-Tan</option>
+        <option value="5">Waxing</option>
+      </select>
     </div>
     </br>
     <h3>Date</h3>
