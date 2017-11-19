@@ -27,10 +27,15 @@ def booking():
         access_token = session.get('access_token')
         if access_token is None:
             return redirect(url_for('login'))
-        dt = request.form['date']
-        tm = request.form['time']
-        em = session['user']['email']
-        database.add_book(em,dt,tm)
+        srv = int(request.form['services'])
+        if srv > 0:
+            dt = request.form['date']
+            tm = request.form['time']
+            em = session['user']['email']
+            database.add_book(srv,em,dt,tm)
+        else:
+            flash('invalid option for service field')
+            return redirect(url_for('booking'))
         return render_template('index.html',title="Landing")
 
 @app.route('/myBook')
@@ -56,7 +61,6 @@ def login():
 
 def main():
     app.run()
-
 
 if __name__ == '__main__':
     main()

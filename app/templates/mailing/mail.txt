@@ -1,0 +1,18 @@
+Dear {{ entry['name'] }},
+You have successfully booked your appointment. Your appointment details are as below
+
+
+Date    :    {{ entry['date'] }}
+
+Time    :    {{ entry['time'] }}
+
+Service :    {{ entry['service'] }}
+
+
+See you at the Salon :)
+
+You can see you appointments at {{ url_for('myBooking', _external=True) }}
+
+
+Regards,
+Belleza - The Salon

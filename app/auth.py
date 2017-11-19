@@ -1,5 +1,5 @@
 import json
-from config import GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET, REDIRECT_URI, SECRET_KEY
+from config import GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET, REDIRECT_URI, SECRET_KEY, ADMIN
 from flask import session, redirect, url_for
 from urllib2 import urlopen, Request, URLError
 from app import app
@@ -27,7 +27,6 @@ def authorized(resp):
     set_session()
     return redirect(url_for('index'))
 
-
 @google.tokengetter
 def get_access_token():
     return session.get('access_token')
@@ -44,3 +43,6 @@ def set_session():
 def end_session():
     if session:
         session.clear()
+
+def isadmin(usr,psw):
+    return usr==ADMIN['username'] and psw==ADMIN['password']

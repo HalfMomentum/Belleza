@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../static/css/booking.css">
 <div class="container">
   <h1>My Booked History</h1>
-
+  <h4>{{session['user']['email']}}</h4>
   {% if not entries %}
 
   <h2>No booking yet.</h2>
